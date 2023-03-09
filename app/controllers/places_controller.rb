@@ -1,7 +1,7 @@
 class PlacesController < ApplicationController
 
   def index
-    @places = Place.all
+      @places = Place.all
   end
 
   def show
@@ -14,9 +14,15 @@ class PlacesController < ApplicationController
   end
 
   def create
-    @place = Place.new
-    @place["name"] = params["place"]["name"]
-    @place.save
+    if @current_user
+      @place = Place.new
+      @place["name"] = params["place"]["name"]
+      @place["user_id"] = @current_user["id"]
+      @place.save
+    else
+      flash["notice"] = "Please login first"
+      redirect_to "/sessions/new"
+    end
     redirect_to "/places"
   end
 
