@@ -12,7 +12,7 @@ class PostsController < ApplicationController
       @post["description"] = params["post"]["description"]
       @post["posted_on"] = params["post"]["posted_on"]
       @post["place_id"] = params["post"]["place_id"]
-      @place["user_id"] = @current_user["id"]
+      @post["user_id"] = @current_user["id"]
       @post.save
     else
       flash["notice"] = "Please login first"
