@@ -22,4 +22,7 @@ test:
 
 production:
   <<: *default
-  database: db/production.sqlite3
+  adapter: postgresql
+  database: kellogg_software_intro_app_production
+  username: kellogg_software_intro_app
+  password: <%= ENV["KELLOGG_SOFTWARE_INTRO_APP_DATABASE_PASSWORD"] %>
