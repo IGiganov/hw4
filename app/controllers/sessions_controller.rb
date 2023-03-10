@@ -25,7 +25,7 @@ class SessionsController < ApplicationController
   def destroy
     session["user_id"] = nil
     flash["notice"] = "Goodbye"
-    redirect_to "/sessions/new"
+    redirect_to "/places"
   end
 
 end
