@@ -8,13 +8,15 @@ class PlacesController < ApplicationController
 
   def show
     if @current_user
-      @place = Place.find_by({ "id" => params["id"] })
+      @place = Place.find_by({ "id" => params["id"], "user_id" => @current_user["id"] })
       @posts = Post.where({ "place_id" => @place["id"], "user_id" => @current_user["id"] })
     end
   end
 
   def new
-    @place = Place.new
+    if @current_user
+      @place = Place.new
+    end
   end
 
   def create
