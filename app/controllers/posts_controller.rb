@@ -18,7 +18,7 @@ class PostsController < ApplicationController
       @post.save
     else
       flash["notice"] = "Please login first"
-      redirect_to "/sessions/new"
+      redirect_to "/login"
     end
 
     redirect_to "/places/#{@post["place_id"]}"
