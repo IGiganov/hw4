@@ -4,9 +4,9 @@ class UsersController < ApplicationController
   end
 
   def create
-    user_exists = 
+    user_exists = User.find_by({ "email" => params["user"]["email"] })
 
-    if User.find_by({ "email" => params["user"]["email"] })
+    if user_exists
       flash["notice"] = "User with this email already exists"
       redirect_to "/signup"
     else 
